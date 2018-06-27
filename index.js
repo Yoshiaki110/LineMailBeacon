@@ -64,9 +64,11 @@ app.post('/', function(request, response) {
       console.log('*event.beacon.dm : ' + event.beacon.dm);
       console.log('*event.source.userId : ' + event.source.userId);
       if (event.beacon.type == 'enter') {
-        reply(event, '郵便物があります ' + event.beacon.dm);
+        hex = event.beacon.dm.substr(2,2);
+        mm = parseInt(hex, 16);
+        reply(event, '郵便物があります ' + mm + 'mm');
       } else {
-        reply(event, '郵便物が取り出されました ' + event.beacon.dm);
+        reply(event, '郵便物が取り出されました');
       }
     }
     if (event.type == 'postback') {
